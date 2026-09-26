@@ -20,50 +20,17 @@ El dominio contiene reglas de negocio y no depende de Express ni de PostgreSQL. 
 ## Modelo relacional
 
 ```mermaid
-erDiagram
-  USUARIOS ||--o{ PEDIDOS : realiza
-  CATEGORIAS ||--o{ PRODUCTOS : clasifica
-  PEDIDOS ||--|{ DETALLE_PEDIDO : contiene
-  PRODUCTOS ||--o{ DETALLE_PEDIDO : aparece_en
-  USUARIOS {
-    bigint id PK
-    varchar nombre
-    varchar email UK
-    text password_hash
-    varchar rol
-    boolean activo
-  }
-  CATEGORIAS {
-    bigint id PK
-    varchar nombre UK
-    text descripcion
-    boolean activo
-  }
-  PRODUCTOS {
-    bigint id PK
-    bigint categoria_id FK
-    varchar nombre
-    varchar sku UK
-    numeric precio
-    integer stock
-    boolean activo
-  }
-  PEDIDOS {
-    bigint id PK
-    bigint usuario_id FK
-    varchar estado
-    numeric subtotal
-    numeric total
-    varchar metodo_pago
-    text motivo_cancelacion
-  }
-  DETALLE_PEDIDO {
-    bigint id PK
-    bigint pedido_id FK
-    bigint producto_id FK
-    integer cantidad
-    numeric precio_unitario
-  }
+flowchart LR
+  U["USUARIOS<br/>PK id<br/>email UNIQUE<br/>password_hash<br/>rol, activo"]
+  C["CATEGORIAS<br/>PK id<br/>nombre UNIQUE<br/>descripcion"]
+  P["PRODUCTOS<br/>PK id<br/>FK categoria_id<br/>nombre, SKU, slug<br/>precio, stock"]
+  O["PEDIDOS<br/>PK id<br/>FK usuario_id<br/>estado, subtotal, total<br/>metodo_pago"]
+  D["DETALLE_PEDIDO<br/>PK id<br/>FK pedido_id<br/>FK producto_id<br/>cantidad, precio_unitario"]
+
+  U -->|"1 a muchos"| O
+  C -->|"1 a muchos"| P
+  O -->|"1 a muchos"| D
+  P -->|"1 a muchos"| D
 ```
 
 `DETALLE_PEDIDO` es la entidad asociativa que representa la relación muchos a muchos entre pedidos y productos, conserva precio/nombre de compra y permite descontar o restaurar inventario transaccionalmente. Un usuario tiene muchos pedidos; una categoría clasifica muchos productos.
