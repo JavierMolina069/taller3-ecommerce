@@ -1,0 +1,14 @@
+**/node_modules/
+**/dist/
+coverage/
+.env
+.env.*
+!.env.example
+!.env.ecommerce.example
+*.log
+npm-debug.log*
+.DS_Store
+/server-respaldo.js
+/sudo
+/src/infrastructure/database/mysql.js
+/src/infrastructure/repositories/MySQLUserRepository.js
