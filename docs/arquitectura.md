@@ -10,6 +10,13 @@ flowchart LR
   UseCases --> Domain[Dominio: Usuario, Producto, Pedido]
   UseCases --> Ports[Puertos: repositorios y servicios]
   Ports -. implementados por .-> Repos[Adaptadores PostgreSQL]
+  Dashboard -->|GET /reportes + JWT| AnalyticsRoute[Ruta de reportes]
+  AnalyticsRoute --> AnalyticsController[AnalyticsController]
+  AnalyticsController --> AnalyticsUseCase[AnalytecService]
+  AnalyticsUseCase --> AnalyticsPort[Puerto AnalyticsRepository]
+  AnalyticsAdapter[AnalyticsRepositoryAdapter] -. implementa .-> AnalyticsPort
+  AnalyticsAdapter --> DB
+  Dashboard[Dashboard admin con Recharts]
   Ports -. implementados por .-> Hash[BcryptPasswordHasher]
   Repos --> DB[(PostgreSQL)]
   Hash --> UseCases
@@ -23,7 +30,7 @@ El dominio contiene reglas de negocio y no depende de Express ni de PostgreSQL. 
 flowchart LR
   U["USUARIOS<br/>PK id<br/>email UNIQUE<br/>password_hash<br/>rol, activo"]
   C["CATEGORIAS<br/>PK id<br/>nombre UNIQUE<br/>descripcion"]
-  P["PRODUCTOS<br/>PK id<br/>FK categoria_id<br/>nombre, SKU, slug<br/>precio, stock"]
+  P["PRODUCTOS<br/>PK id<br/>FK categoria_id<br/>nombre, SKU, slug<br/>precio, stock, image_url"]
   O["PEDIDOS<br/>PK id<br/>FK usuario_id<br/>estado, subtotal, total<br/>metodo_pago"]
   D["DETALLE_PEDIDO<br/>PK id<br/>FK pedido_id<br/>FK producto_id<br/>cantidad, precio_unitario"]
 

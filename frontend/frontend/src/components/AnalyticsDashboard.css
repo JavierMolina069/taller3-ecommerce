@@ -1,0 +1,39 @@
+.analytics-page { width: min(1220px, calc(100% - 48px)); margin: 50px auto 90px; color: #202b27; }
+.analytics-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 26px; }
+.analytics-heading h1 { margin: 4px 0 8px; font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.045em; }
+.analytics-heading p:not(.eyebrow) { color: #78817c; margin: 0; }
+.analytics-refresh { border-radius: 8px; padding: 12px 17px; background: #245c49; color: white; font-weight: 700; }
+.analytics-filters { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; padding: 18px; margin-bottom: 20px; border: 1px solid #e6e8e1; border-radius: 14px; background: white; }
+.analytics-filters label { display: grid; gap: 7px; color: #78817c; font-size: 12px; font-weight: 700; }
+.analytics-filters select, .analytics-filters input { min-height: 40px; min-width: 145px; padding: 8px 10px; border: 1px solid #dfe3dc; border-radius: 8px; color: #202b27; background: #fff; font: inherit; font-size: 13px; }
+.analytics-error { padding: 13px 16px; margin: 14px 0; border-radius: 9px; color: #873b34; background: #fff0ed; }
+.analytics-loading { color: #78817c; }
+.analytics-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 16px; }
+.analytics-metric-card { min-height: 126px; display: flex; flex-direction: column; justify-content: space-between; padding: 18px; border: 1px solid #e6e8e1; border-radius: 14px; background: white; box-shadow: 0 8px 22px rgba(32,43,39,.035); }
+.analytics-metric-card span { color: #78817c; font-size: 13px; }
+.analytics-metric-card strong { color: #173f32; font-size: clamp(1.35rem, 2vw, 1.85rem); letter-spacing: -.04em; }
+.analytics-metric-card small { color: #929a95; font-size: 11px; }
+.analytics-chart-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(330px, 1fr); gap: 16px; margin-bottom: 16px; }
+.analytics-card { min-width: 0; padding: 20px; border: 1px solid #e6e8e1; border-radius: 14px; background: white; box-shadow: 0 8px 22px rgba(32,43,39,.035); }
+.analytics-card-heading { display: flex; justify-content: space-between; gap: 15px; }
+.analytics-card-heading h2 { margin: 0 0 5px; font-size: 17px; }
+.analytics-card-heading p { margin: 0; color: #929a95; font-size: 12px; }
+.analytics-chart { position: relative; height: 290px; margin-top: 15px; }
+.analytics-pie-chart { height: 235px; }
+.analytics-empty-chart { position: absolute; inset: 36% 12px auto; margin: 0; text-align: center; color: #929a95; pointer-events: none; font-size: 13px; }
+.analytics-status-list { display: grid; gap: 9px; }
+.analytics-status-list > div { display: grid; grid-template-columns: 10px 1fr 35px 48px; align-items: center; gap: 8px; font-size: 12px; }
+.analytics-status-list i { width: 8px; height: 8px; border-radius: 50%; }
+.analytics-status-list span, .analytics-status-list small { color: #78817c; }
+.analytics-status-list strong { text-align: right; }
+.analytics-status-list small { text-align: right; }
+.analytics-ranking-card { padding-bottom: 8px; }
+.analytics-table-wrap { overflow-x: auto; margin-top: 17px; }
+.analytics-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+.analytics-table th { padding: 11px 10px; color: #78817c; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; border-bottom: 1px solid #e6e8e1; }
+.analytics-table td { padding: 13px 10px; border-bottom: 1px solid #f0f0eb; }
+.analytics-table td:first-child { color: #929a95; }
+.analytics-table td:last-child { font-weight: 700; }
+.analytics-empty-row { text-align: center; color: #929a95; padding: 28px !important; }
+@media (max-width: 900px) { .analytics-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .analytics-chart-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .analytics-page { width: calc(100% - 28px); margin-top: 28px; } .analytics-heading { align-items: start; flex-direction: column; } .analytics-filters label { flex: 1 1 145px; } .analytics-filters select, .analytics-filters input { min-width: 0; width: 100%; } .analytics-metrics { gap: 9px; } .analytics-metric-card { min-height: 112px; padding: 13px; } .analytics-card { padding: 15px; } }

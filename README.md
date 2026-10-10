@@ -21,10 +21,13 @@ Desde la raíz del proyecto `~/taller3apiweeb`:
 
 El origen permitido por CORS debe coincidir con el origen del frontend (`CORS_ORIGIN`, normalmente `http://localhost:5173`). No uses claves de ejemplo en un entorno desplegado.
 
+Para desplegar el frontend y la API por separado, define `VITE_API_URL` con la URL pública del backend antes de ejecutar `npm run build`; configura `CORS_ORIGIN` en el backend con el origen del frontend. La Actividad 2.6 y el contrato del dashboard están documentados en `docs/dashboard-analitico.md` y `docs/endpoints.md`.
+
 ## Arquitectura y API
 
 - [Arquitectura y modelo relacional](docs/arquitectura.md)
 - [Especificación de endpoints](docs/endpoints.md)
+- [Dashboard analítico — Actividad 2.6](docs/dashboard-analitico.md)
 - [Guía de WSL](docs/despliegue-wsl.md)
 - [Preparación para AWS Academy](docs/aws-academy.md)
 

@@ -34,10 +34,14 @@ CREATE TABLE IF NOT EXISTS productos (
     descripcion TEXT,
     precio NUMERIC(12, 2) NOT NULL CHECK (precio >= 0),
     stock INTEGER NOT NULL DEFAULT 0 CHECK (stock >= 0),
+    image_url TEXT,
     activo BOOLEAN NOT NULL DEFAULT TRUE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+ALTER TABLE productos
+    ADD COLUMN IF NOT EXISTS image_url TEXT;
 
 CREATE INDEX IF NOT EXISTS ix_productos_categoria_activo
     ON productos (categoria_id, activo);
@@ -64,6 +68,9 @@ CREATE TABLE IF NOT EXISTS pedidos (
 
 CREATE INDEX IF NOT EXISTS ix_pedidos_usuario_fecha
     ON pedidos (usuario_id, created_at DESC);
+
+CREATE INDEX IF NOT EXISTS ix_pedidos_fecha_estado
+    ON pedidos (created_at DESC, estado);
 
 CREATE TABLE IF NOT EXISTS detalle_pedido (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

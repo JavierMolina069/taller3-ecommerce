@@ -4,6 +4,7 @@ import * as catalogService from "./services/catalogService";
 import ProfileActions from "./components/ProfileActions";
 import * as orderService from "./services/orderService";
 import * as userService from "./services/userService";
+import AnalyticsDashboard from "./components/AnalyticsDashboard";
 import "./App.css";
 import "./redesign.css";
 
@@ -371,6 +372,7 @@ function App() {
                 <nav className="main-nav">
                     <button className={view === "catalog" ? "active" : ""} onClick={() => { setView("catalog"); setCategoryFilter(""); setSearch(""); window.setTimeout(() => document.getElementById("catalog-grid")?.scrollIntoView({ behavior: "smooth" }), 120); }}>Catálogo</button>
                     {user && <button className={view === "orders" ? "active" : ""} onClick={() => setView("orders")}>Mis pedidos</button>}
+                    {user?.rol === "administrador" && <button className={view === "dashboard" ? "active" : ""} onClick={() => setView("dashboard")}>Dashboard</button>}
                     {user?.rol === "administrador" && <button className={view === "admin" ? "active" : ""} onClick={() => setView("admin")}>Administración</button>}
                 </nav>
                 <div className="account-actions">
@@ -542,6 +544,8 @@ function App() {
                     </div>
                 </section>
             )}
+
+            {view === "dashboard" && user?.rol === "administrador" && <AnalyticsDashboard />}
 
             {view === "admin" && user?.rol === "administrador" && (
                 <section className="page-section admin-page">
