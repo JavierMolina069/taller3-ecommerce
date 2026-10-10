@@ -6,6 +6,7 @@ const userRoutes = require("./src/adapters/http/routes/userRoutes");
 const authRoutes = require("./src/adapters/http/routes/authRoutes");
 const orderRoutes = require("./src/adapters/http/routes/orderRoutes");
 const catalogRoutes = require("./src/adapters/http/routes/catalogRoutes");
+const analyticsRoutes = require("./src/adapters/http/routes/analyticsRoutes");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use("/auth", authRoutes);
 app.use(orderRoutes);
 app.use("/usuarios", userRoutes);
 app.use(catalogRoutes);
+app.use(analyticsRoutes);
 
 app.use((req, res) => {
     res.status(404).json({ error: "Ruta no encontrada" });
